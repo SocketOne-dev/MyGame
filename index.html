@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <!-- Настройка для мобильных устройств: отключает масштабирование и делает ширину сайта равной ширине экрана -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Викторина</title>
+  <!-- Подключение файла со стилями (внешний вид приложения) -->
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <!-- Главный контейнер приложения. На ПК он центрируется и выглядит как экран телефона, 
+       а на мобильных устройствах занимает 100% ширины и высоты экрана. -->
+  <div id="app-container">
+    
+    <!-- ЭКРАН 1: Главное меню -->
+    <!-- Класс .screen задает общие стили для всех экранов (позиционирование, отступы). -->
+    <section id="screen-home" class="screen">
+      <h1>Викторина</h1>
+      <!-- Контейнер, куда JavaScript динамически добавит кнопки с классами (9 класс, 10 класс и т.д.) -->
+      <div id="classes-container" class="button-group"></div>
+      <!-- Кнопка для перехода к экрану рекордов -->
+      <button id="btn-highscores" class="btn-secondary">Рекорды</button>
+    </section>
+
+    <!-- ЭКРАН 2: Выбор предмета -->
+    <!-- Класс .hidden скрывает этот экран по умолчанию (display: none). 
+         JavaScript будет убирать этот класс, когда нужно показать экран. -->
+    <section id="screen-subjects" class="screen hidden">
+      <h2 id="subjects-title">Предметы</h2>
+      <!-- Контейнер для динамически создаваемых кнопок с предметами (Математика, История и т.д.) -->
+      <div id="subjects-container" class="button-group"></div>
+      <!-- Кнопка возврата в главное меню -->
+      <button id="btn-back-home" class="btn-secondary">Назад</button>
+    </section>
+
+    <!-- ЭКРАН 3: Игровой процесс -->
+    <section id="screen-game" class="screen hidden">
+      <!-- Шапка игры: содержит текущий счет, оставшиеся жизни и кнопку выхода -->
+      <div class="game-header">
+        <div class="score-container">Счет: <span id="score-display">0</span></div>
+        <div class="hearts-container" id="hearts-display">
+          <!-- Изначально у игрока 3 жизни (сердечка) -->
+          <span>❤️</span><span>❤️</span><span>❤️</span>
+        </div>
+        <!-- Кнопка-крестик для досрочного завершения игры -->
+        <button id="btn-quit" class="btn-icon">✖</button>
+      </div>
+      <!-- Блок с текстом текущего вопроса -->
+      <div class="question-container">
+        <h3 id="question-text">Вопрос?</h3>
+      </div>
+      <!-- Контейнер, куда JavaScript вставит 4 кнопки с вариантами ответов -->
+      <div id="options-container" class="button-group"></div>
+    </section>
+
+    <!-- ЭКРАН 4: Результаты игры -->
+    <section id="screen-result" class="screen hidden">
+      <!-- Заголовок меняется динамически: "Игра окончена" или "Конец категории" -->
+      <h2 id="result-title">Игра окончена</h2>
+      <!-- Сообщение, объясняющее причину завершения игры (кончились жизни или вопросы) -->
+      <p id="result-message" style="text-align: center; margin-bottom: 20px; color: #aaa; line-height: 1.4;"></p>
+      
+      <!-- Блок с итоговым счетом и лучшим рекордом по выбранному предмету -->
+      <div style="text-align: center; margin-bottom: 30px;">
+        <p style="font-size: 24px; margin-bottom: 10px;">Ваш счет: <span id="final-score">0</span></p>
+        <p style="font-size: 18px; color: #ffd700;">Рекорд: <span id="record-score">0</span></p>
+      </div>
+      
+      <!-- Кнопки действий после игры -->
+      <div class="button-group">
+        <button id="btn-play-again" class="btn-primary">Играть снова</button>
+      </div>
+      <button id="btn-home-from-result" class="btn-secondary">На главную</button>
+    </section>
+    
+    <!-- ЭКРАН 5: Таблица рекордов -->
+    <section id="screen-highscores" class="screen hidden">
+      <h2>Рекорды</h2>
+      <!-- Контейнер для вывода списка лучших результатов, сохраненных в localStorage -->
+      <div id="highscores-list"></div>
+      <button id="btn-back-from-scores" class="btn-secondary">Назад</button>
+    </section>
+  </div>
+
+  <!-- Подключение JavaScript файлов. 
+       Сначала загружается база данных (data.js), затем основная логика (script.js). -->
+  <script src="/data.js"></script>
+  <script src="/script.js"></script>
+</body>
+</html>
+
