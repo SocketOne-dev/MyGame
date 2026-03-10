@@ -262,7 +262,7 @@ function endGame() {
 
   // --- ФОРМИРОВАНИЕ СООБЩЕНИЯ ---
   // Меняем текст заголовка и описания в зависимости от причины конца игры
-  if (lives === 0) || btnQuit.onclick{
+  if (lives === 0) || (popka===1){
     // Игрок потратил все 3 жизни
     resultTitle.textContent = "Игра окончена 💔";
     resultMessage.textContent = "Жизни закончились. Не сдавайся, попробуй еще раз!";
@@ -315,7 +315,8 @@ function showHighScores() {
 btnHighscores.onclick = showHighScores;
 btnBackHome.onclick = () => showScreen('home');
 btnQuit.onclick = endGame; // Досрочное завершение игры приравнивается к проигрышу
-btnQuit.onclick = popka+1
+if btnQuit.onclick:
+  popka=popka+1
 btnPlayAgain.onclick = () => startGame(selectedSubject); // Перезапуск того же предмета
 btnHomeFromResult.onclick = () => showScreen('home');
 btnBackFromScores.onclick = () => showScreen('home');
