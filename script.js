@@ -156,10 +156,6 @@ function updateHeader() {
   heartsDisplay.innerHTML = Array(lives).fill('<span>❤️</span>').join('');
 }
 
-btnQuit.onclick = function() {
-  popo=popo+1;
-};
-
 /**
  * Отрисовка текущего вопроса и вариантов ответа.
  */
@@ -265,7 +261,7 @@ function endGame() {
 
   // --- ФОРМИРОВАНИЕ СООБЩЕНИЯ ---
   // Меняем текст заголовка и описания в зависимости от причины конца игры
-  if (lives === 0) || (popo!=0){
+  if (lives === 0){
     // Игрок потратил все 3 жизни
     resultTitle.textContent = "Игра окончена 💔";
     resultMessage.textContent = "Жизни закончились. Не сдавайся, попробуй еще раз!";
