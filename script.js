@@ -220,7 +220,7 @@ function handleAnswer(btn, selected, correct) {
   setTimeout(() => {
     currentIndex++; // Переходим к следующему вопросу
     renderQuestion(); // Отрисовываем его
-  }, 500);
+  }, 1000);
 }
 
 // ==========================================
